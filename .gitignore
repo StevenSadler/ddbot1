@@ -1,0 +1,40 @@
+# ROS 2 build artifacts
+build/
+install/
+log/
+
+# Colcon specific
+.colcon_workspace
+
+# C++ specific
+*.o
+*.so
+*.a
+*.lo
+*.la
+*.slo
+*.dll
+*.lib
+*.exp
+*.ilk
+*.pdb
+*.obj
+*.exe
+
+# Python specific
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Editor/IDE specific (examples)
+.vscode/
+.idea/
+*.swp
+*~
+
+# Other common temporary files
+*.bak
+*.tmp
+*.log
+
