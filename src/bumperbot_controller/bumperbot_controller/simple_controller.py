@@ -28,7 +28,7 @@ class SimpleController(Node):
         self.vel_sub_ = self.create_subscription(TwistStamped, "bumperbot_controller/cmd_vel", self.velCallback, 10)
 
         self.speed_conversion_ = np.array([[self.wheel_radius_/2, self.wheel_radius_/2],
-                                           self.wheel_radius_/self.wheel_separation_, -self.wheel_radius_/self.wheel_separation_])
+                                           [self.wheel_radius_/self.wheel_separation_, -self.wheel_radius_/self.wheel_separation_]])
         
         self.get_logger().info("The conversion matrix is %s" %self.speed_conversion_)
     
