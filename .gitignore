@@ -38,3 +38,7 @@ __pycache__/
 *.tmp
 *.log
 
+# view frame images
+*.gv
+*.pdf
+
