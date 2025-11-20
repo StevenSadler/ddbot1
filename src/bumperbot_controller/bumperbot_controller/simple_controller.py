@@ -46,7 +46,6 @@ class SimpleController(Node):
 
         self.speed_conversion_ = np.array([[self.wheel_radius_/2, self.wheel_radius_/2],
                                            [self.wheel_radius_/self.wheel_separation_, -self.wheel_radius_/self.wheel_separation_]])
-                                           [self.wheel_radius_/self.wheel_separation_, -self.wheel_radius_/self.wheel_separation_]])
         
         self.odom_msg_ = Odometry()
         self.odom_msg_.header.frame_id = "odom"
@@ -55,6 +54,11 @@ class SimpleController(Node):
         self.odom_msg_.pose.pose.orientation.y = 0.0
         self.odom_msg_.pose.pose.orientation.z = 0.0
         self.odom_msg_.pose.pose.orientation.w = 1.0
+
+        self.broadcaster_ = TransformBroadcaster(self)
+        self.transform_stamped_ = TransformStamped()
+        self.transform_stamped_.header.frame_id = "odom"
+        self.transform_stamped_.child_frame_id = "base_footprint"
         
         self.get_logger().info("The conversion matrix is %s" %self.speed_conversion_)
     
@@ -103,11 +107,6 @@ class SimpleController(Node):
         self.odom_msg_.pose.pose.position.y = self.y_
         self.odom_msg_.twist.twist.linear.x = linear
         self.odom_msg_.twist.twist.angular.z = angular
-
-        self.broadcaster_ = TransformBroadcaster(self)
-        self.transform_stamped_ = TransformStamped()
-        self.transform_stamped_.header.frame_id = "odom"
-        self.transform_stamped_.child_frame_id = "base_footprint"
 
         self.transform_stamped_.transform.translation.x = self.x_
         self.transform_stamped_.transform.translation.y = self.y_
