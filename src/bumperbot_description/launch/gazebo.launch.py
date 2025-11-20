@@ -58,10 +58,19 @@ def generate_launch_description():
                    "-name", "ddbot"]
     )
 
+    gz_ros2_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+        ]
+    )
+
     return LaunchDescription([
         model_arg,
         robot_state_publisher_node,
         gazebo_resource_path,
         gazebo,
-        gz_spawn_entity
+        gz_spawn_entity,
+        gz_ros2_bridge
     ])
