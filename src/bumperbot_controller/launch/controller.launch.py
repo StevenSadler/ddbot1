@@ -40,6 +40,11 @@ def noisy_controller(context, *args, **kwargs):
 
 def generate_launch_description():
 
+    use_sim_time_arg = DeclareLaunchArgument(
+        "use_sim_time",
+        default_value="True"
+    )
+
     use_python_arg = DeclareLaunchArgument(
         "use_python",
         default_value="False"
@@ -70,6 +75,7 @@ def generate_launch_description():
         default_value="0.02"
     )
 
+    use_sime_time = LaunchConfiguration("use_sim_time")
     use_python = LaunchConfiguration("use_python")
     wheel_radius = LaunchConfiguration("wheel_radius")
     wheel_separation = LaunchConfiguration("wheel_separation")
@@ -130,6 +136,7 @@ def generate_launch_description():
     noisy_controller_launch = OpaqueFunction(function=noisy_controller)
 
     return LaunchDescription([
+        use_sim_time_arg,
         use_python_arg,
         wheel_radius_arg,
         wheel_separation_arg,
