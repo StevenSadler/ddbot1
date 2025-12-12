@@ -24,7 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'simple_publisher = sample_py_only.simple_publisher:main'
+            'simple_publisher = sample_py_only.simple_publisher:main',
+            'simple_subscriber = sample_py_only.simple_subscriber:main',
         ],
     },
 )
